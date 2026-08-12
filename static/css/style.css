@@ -17,6 +17,119 @@
   --shadow: 0 22px 60px rgba(7, 17, 31, 0.35);
 }
 
+.snowflakes {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
+}
+
+.snowflake {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.8rem;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+  animation: floatSnow 14s linear infinite;
+}
+
+.snowflake:nth-child(1) { top: 10%; left: 8%; animation-delay: 0s; }
+.snowflake:nth-child(2) { top: 22%; left: 20%; animation-delay: 1.2s; }
+.snowflake:nth-child(3) { top: 16%; left: 34%; animation-delay: 2.4s; }
+.snowflake:nth-child(4) { top: 12%; left: 52%; animation-delay: 3.6s; }
+.snowflake:nth-child(5) { top: 30%; left: 70%; animation-delay: 1.8s; }
+.snowflake:nth-child(6) { top: 18%; left: 82%; animation-delay: 2.8s; }
+.snowflake:nth-child(7) { top: 32%; left: 90%; animation-delay: 4.4s; }
+.snowflake:nth-child(8) { top: 38%; left: 12%; animation-delay: 5.1s; }
+
+@keyframes floatSnow {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: translateY(26px) rotate(180deg); opacity: 0; }
+}
+
+.showcase-row {
+  margin-top: 26px;
+}
+
+.vku-showcase {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 18px;
+  width: min(620px, 100%);
+  margin: 0 auto;
+  padding: 18px 18px 18px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 28px;
+  box-shadow: 0 18px 40px rgba(7, 17, 31, 0.28);
+}
+
+.vku-visual {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.vku-showcase img {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  display: block;
+}
+
+.vku-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1rem 0.75rem;
+  text-align: left;
+}
+
+.vku-kicker {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary-strong);
+  margin-bottom: 0.4rem;
+}
+
+.vku-copy strong {
+  display: block;
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  line-height: 0.95;
+  color: #fff;
+}
+
+.vku-copy small {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.header-image {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(7, 17, 31, 0.15), rgba(7, 17, 31, 0.65));
+}
+
+.header-banner {
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(180deg, rgba(10, 13, 25, 0.25), rgba(10, 13, 25, 0.7)),
+    url('./assets/img/Banner (2).png') center/cover no-repeat;
+  filter: saturate(1.2) contrast(1.08);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -114,14 +227,14 @@ img {
 }
 
 .hero {
-  padding: 100px 0 80px;
+  padding: 70px 0 80px;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.08fr 0.92fr;
+  grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
-  gap: 52px;
+  gap: 40px;
 }
 
 .eyebrow {
@@ -136,22 +249,24 @@ img {
 
 .hero h1 {
   margin: 0;
-  font-size: clamp(2.7rem, 7vw, 5.7rem);
-  line-height: 0.98;
+  font-size: clamp(2.8rem, 6vw, 5.3rem);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  text-shadow: 0 12px 24px rgba(11, 17, 27, 0.42);
 }
 
 .hero h2 {
   margin: 0.9rem 0 0;
-  font-size: clamp(1.1rem, 2vw, 2rem);
-  color: var(--muted);
+  font-size: clamp(1.08rem, 2vw, 1.9rem);
+  color: #d9e3f5;
   font-weight: 600;
 }
 
 .hero p {
-  margin-top: 1.2rem;
+  margin-top: 1.15rem;
   max-width: 600px;
-  color: var(--muted);
-  font-size: 1.05rem;
+  color: #b5c1d9;
+  font-size: 1.03rem;
 }
 
 .hero-actions {
@@ -192,18 +307,20 @@ img {
 .profile-card {
   position: relative;
   width: min(420px, 100%);
-  background: linear-gradient(135deg, rgba(124, 108, 255, 0.22), rgba(255, 122, 89, 0.12));
-  border: 1px solid var(--line);
-  border-radius: 32px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(124, 108, 255, 0.12));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 30px;
   padding: 18px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 28px 50px rgba(7, 17, 31, 0.34);
+  transform: rotate(-1deg);
 }
 
 .profile-card img {
   width: 100%;
-  height: 520px;
+  height: 500px;
   object-fit: cover;
-  border-radius: 24px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .badge {
