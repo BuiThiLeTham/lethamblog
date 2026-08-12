@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 	"path/filepath"
 	"strings"
 	"time"
@@ -47,6 +48,7 @@ func main() {
 
 	mux := http.NewServeMux()
 	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	mux.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
 
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
@@ -131,7 +133,12 @@ func main() {
 		json.NewEncoder(w).Encode(map[string]string{"status": "success", "message": "Tin nhắn của bạn đã được gửi thành công!"})
 	})
 
-	addr := ":8080"
-	log.Printf("Server started at http://localhost%s", addr)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8081"
+	}
+
+	addr := ":" + port
+	log.Printf("Server started at http://localhost:%s", port)
 	log.Fatal(http.ListenAndServe(addr, mux))
 }

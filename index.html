@@ -1,62 +1,61 @@
 ﻿<!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio của Bùi Thị Lệ Thắm" />
-    <title>Bùi Thị Lệ Thắm | Developer • Web Developer</title>
+    <meta name="description" content="Portfolio of Bùi Thị Lệ Thắm" />
+    <title>Bùi Thị Lệ Thắm | Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./static/css/style.css" />
   </head>
-  <body>
-    <div class="snowflakes" aria-hidden="true">
-      <span class="snowflake">✦</span>
-      <span class="snowflake">✦</span>
-      <span class="snowflake">✦</span>
-      <span class="snowflake">✦</span>
-      <span class="snowflake">✦</span>
-      <span class="snowflake">✦</span>
-      <span class="snowflake">✦</span>
-      <span class="snowflake">✦</span>
-    </div>
+  <body data-theme="light">
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
 
     <header class="site-header">
       <div class="container nav">
-        <a href="#home" class="brand">Bùi Thị Lệ Thắm</a>
+        <a href="#home" class="brand">Le Tham</a>
+
         <nav class="nav-links" aria-label="Main navigation">
-          <a href="#about">Giới thiệu</a>
-          <a href="#skills">Kỹ năng</a>
-          <a href="#experience">Kinh nghiệm</a>
-          <a href="#projects">Dự án</a>
-          <a href="#contact">Liên hệ</a>
+          <a href="#about" data-i18n="nav.about">About</a>
+          <a href="#skills" data-i18n="nav.skills">Skills</a>
+          <a href="#experience" data-i18n="nav.experience">Experience</a>
+          <a href="#projects" data-i18n="nav.projects">Projects</a>
+          <a href="#contact" data-i18n="nav.contact">Contact</a>
         </nav>
-        <a href="#contact" class="btn btn-primary">Hire Me</a>
+
+        <div class="header-actions">
+          <label class="language-switch" aria-label="Language selector">
+            <span>🌐</span>
+            <select id="languageSelect" aria-label="Select language">
+              <option value="en">EN</option>
+              <option value="vi">VI</option>
+              <option value="ja">JP</option>
+            </select>
+          </label>
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
+          <a href="#contact" class="btn btn-primary" data-i18n="nav.hire">Hire Me</a>
+        </div>
       </div>
     </header>
-
-
-      </div>
-    </div>
 
     <main>
       <section id="home" class="hero">
         <div class="container hero-grid">
           <div class="hero-content">
-            <span class="eyebrow">Hello, I am</span>
-            <h1>Bùi Thị <br>
-               Lệ Thắm</h1>
-            <h2>Developer • Web Developer • Problem Solver</h2>
-            <p>
-              Tôi xây dựng các sản phẩm web hiện đại, rõ ràng, tốc độ nhanh và thân thiện với người dùng.
+            <span class="eyebrow" data-i18n="hero.eyebrow">Hello, I am</span>
+            <h1 data-i18n="hero.name">Bùi Thị<br> Lệ Thắm</h1>
+            <h2 data-i18n="hero.role">Developer • Web Developer • Problem Solver</h2>
+            <p data-i18n="hero.description">
+              I build modern, meaningful digital experiences that are clear, fast, and user-friendly.
             </p>
 
             <div class="hero-actions">
-              <a href="#projects" class="btn btn-primary">Xem dự án</a>
-              <a href="#contact" class="btn btn-secondary">Liên hệ</a>
+              <a href="#projects" class="btn btn-primary" data-i18n="hero.cta.primary">View Projects</a>
+              <a href="#contact" class="btn btn-secondary" data-i18n="hero.cta.secondary">Contact</a>
             </div>
 
             <ul class="social-list">
@@ -67,26 +66,26 @@
           </div>
 
           <div class="hero-visual">
-            <div class="profile-card">
-              <div class="badge">Available for work</div>
-              <img src="./assets/img/avt.jpg" alt="Portrait of Bùi Thị Lệ Thắm" />
-              <div class="mini-card">
-                <span>5+</span>
-                <small>Dự án</small>
+            <div class="photo-frame">
+              <div class="badge" data-i18n="hero.available">Available for work</div>
+              <img src="./assets/img/avt.jpg" alt="Bùi Thị Lệ Thắm portrait" />
+              <div class="mini-stat">
+                <strong>5+</strong>
+                <span data-i18n="hero.projects">Projects</span>
               </div>
             </div>
           </div>
         </div>
 
         <div class="container showcase-row">
-          <div class="vku-showcase">
-            <div class="vku-visual">
+          <div class="showcase-card">
+            <div class="showcase-visual">
               <img src="./assets/img/Developer.png" alt="Developer illustration" />
             </div>
-            <div class="vku-copy">
-              <span class="vku-kicker">Study • Build • Grow</span>
+            <div class="showcase-copy">
+              <span class="showcase-kicker" data-i18n="showcase.kicker">Study • Build • Grow</span>
               <strong>VKU</strong>
-              <small>Viet Nam Korea University</small>
+              <small data-i18n="showcase.university">Viet Nam Korea University</small>
             </div>
           </div>
         </div>
@@ -95,26 +94,26 @@
       <section id="about" class="section">
         <div class="container">
           <div class="section-heading">
-            <span class="eyebrow">About Me</span>
-            <h3>Giới thiệu bản thân</h3>
+            <span class="eyebrow" data-i18n="about.eyebrow">About me</span>
+            <h3 data-i18n="about.title">Introduction</h3>
           </div>
 
           <div class="about-grid">
-            <div class="about-card">
-              <p>
-                Tôi là một lập trình viên trẻ với niềm đam mê phát triển web, xây dựng trải nghiệm người dùng tốt và tạo ra những sản phẩm có giá trị thực tế.
+            <div class="glass-card">
+              <p data-i18n="about.text1">
+                I am a young developer with a passion for creating elegant web products that solve real problems and deliver memorable user experiences.
               </p>
-              <p>
-                Tôi thích học hỏi công nghệ mới, tập trung vào backend, API, giao diện hiện đại và tạo ra sản phẩm có giá trị thực tế cho người dùng.
+              <p data-i18n="about.text2">
+                I enjoy learning new technologies, building scalable interfaces, and turning ideas into practical digital solutions.
               </p>
             </div>
 
-            <div class="info-card">
-              <ul>
-                <li><strong>Vị trí:</strong> Developer</li>
-                <li><strong>Địa điểm:</strong> Đà Nẵng, Việt Nam</li>
+            <div class="glass-card compact-card">
+              <ul class="info-list">
+                <li><strong data-i18n="info.role">Role:</strong> <span data-i18n="info.roleValue">Developer</span></li>
+                <li><strong data-i18n="info.location">Location:</strong> <span data-i18n="info.locationValue">Da Nang, Vietnam</span></li>
                 <li><strong>Email:</strong> lethamdaklak2005@gmail.com</li>
-                <li><strong>Phone:</strong> +84 398 389 726</li>
+                <li><strong data-i18n="info.phone">Phone:</strong> <span>+84 398 389 726</span></li>
               </ul>
             </div>
           </div>
@@ -124,56 +123,33 @@
       <section id="skills" class="section alt-bg">
         <div class="container">
           <div class="section-heading">
-            <span class="eyebrow">Skills</span>
-            <h3>Kỹ năng chính</h3>
+            <span class="eyebrow" data-i18n="skills.eyebrow">Skills</span>
+            <h3 data-i18n="skills.title">Core capabilities</h3>
           </div>
 
           <div class="skills-grid">
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>Go</span>
-                <strong>85%</strong>
-              </div>
+            <div class="skill-card">
+              <div class="skill-header"><span>Go</span><strong>85%</strong></div>
               <div class="progress"><i style="width: 85%"></i></div>
             </div>
-
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>HTML / CSS</span>
-                <strong>92%</strong>
-              </div>
+            <div class="skill-card">
+              <div class="skill-header"><span>HTML / CSS</span><strong>92%</strong></div>
               <div class="progress"><i style="width: 92%"></i></div>
             </div>
-
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>JavaScript</span>
-                <strong>83%</strong>
-              </div>
+            <div class="skill-card">
+              <div class="skill-header"><span>JavaScript</span><strong>83%</strong></div>
               <div class="progress"><i style="width: 83%"></i></div>
             </div>
-
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>PHP</span>
-                <strong>80%</strong>
-              </div>
+            <div class="skill-card">
+              <div class="skill-header"><span>PHP</span><strong>80%</strong></div>
               <div class="progress"><i style="width: 80%"></i></div>
             </div>
-
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>MySQL</span>
-                <strong>76%</strong>
-              </div>
+            <div class="skill-card">
+              <div class="skill-header"><span>MySQL</span><strong>76%</strong></div>
               <div class="progress"><i style="width: 76%"></i></div>
             </div>
-
-            <div class="skill-item">
-              <div class="skill-header">
-                <span>Git / GitHub</span>
-                <strong>88%</strong>
-              </div>
+            <div class="skill-card">
+              <div class="skill-header"><span>Git / GitHub</span><strong>88%</strong></div>
               <div class="progress"><i style="width: 88%"></i></div>
             </div>
           </div>
@@ -183,26 +159,25 @@
       <section id="experience" class="section">
         <div class="container">
           <div class="section-heading">
-            <span class="eyebrow">Experience</span>
-            <h3>Học tập & phát triển</h3>
+            <span class="eyebrow" data-i18n="experience.eyebrow">Experience</span>
+            <h3 data-i18n="experience.title">Learning & growth</h3>
           </div>
 
           <div class="timeline">
             <div class="timeline-item">
               <div class="timeline-dot"></div>
               <div class="timeline-content">
-                <span class="timeline-year">2023 - Nay</span>
-                <h4>Đại học VKU</h4>
-                <p>Chuyên ngành Công nghệ Thông tin, tập trung phát triển kỹ năng lập trình, hệ thống, web và UI/UX.</p>
+                <span class="timeline-year">2023 - Present</span>
+                <h4>VKU University</h4>
+                <p data-i18n="experience.item1">Focused on software engineering, web development, systems thinking, and UI/UX design.</p>
               </div>
             </div>
-
             <div class="timeline-item">
               <div class="timeline-dot"></div>
               <div class="timeline-content">
-                <span class="timeline-year">2024 - Nay</span>
-                <h4>Frontend & Backend Practice</h4>
-                <p>Thực hành các dự án web với HTML, CSS, JavaScript, PHP, Go và thiết kế kiến trúc ứng dụng.</p>
+                <span class="timeline-year">2024 - Present</span>
+                <h4 data-i18n="experience.item2Title">Frontend & Backend Practice</h4>
+                <p data-i18n="experience.item2">Building projects with HTML, CSS, JavaScript, PHP, Go and improving software architecture.</p>
               </div>
             </div>
           </div>
@@ -212,37 +187,37 @@
       <section id="projects" class="section project-section">
         <div class="container">
           <div class="section-heading">
-            <span class="eyebrow">Portfolio</span>
-            <h3>Dự án tiêu biểu</h3>
+            <span class="eyebrow" data-i18n="projects.eyebrow">Portfolio</span>
+            <h3 data-i18n="projects.title">Featured projects</h3>
           </div>
 
           <div class="project-grid">
             <article class="project-card">
-              <div class="project-thumb" style="background-image: linear-gradient(180deg, rgba(15,23,42,0.2), rgba(15,23,42,0.6)), url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80');"></div>
+              <div class="project-thumb project-one"></div>
               <div class="project-body">
                 <span class="tag">Laravel</span>
-                <h4>Shop Fashion</h4>
-                <p>Website thương mại điện tử với giao diện thân thiện, trải nghiệm mua hàng tốt và dễ sử dụng.</p>
+                <h4>Fashion Shop</h4>
+                <p data-i18n="projects.p1">An e-commerce website designed to deliver a smooth shopping experience with a clean interface.</p>
                 <a href="https://github.com/BuiThiLeTham/ShopFashion" target="_blank" rel="noreferrer">View project →</a>
               </div>
             </article>
 
             <article class="project-card">
-              <div class="project-thumb" style="background-image: linear-gradient(180deg, rgba(15,23,42,0.2), rgba(15,23,42,0.6)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80');"></div>
+              <div class="project-thumb project-two"></div>
               <div class="project-body">
                 <span class="tag">Java</span>
                 <h4>Chat Application</h4>
-                <p>Ứng dụng nhắn tin thời gian thực, tối ưu cho giao tiếp và tương tác nhanh chóng.</p>
+                <p data-i18n="projects.p2">A real-time messaging application focused on communication, speed, and usability.</p>
                 <a href="https://github.com/havy25/ProjectJava.git" target="_blank" rel="noreferrer">View project →</a>
               </div>
             </article>
 
             <article class="project-card">
-              <div class="project-thumb" style="background-image: linear-gradient(180deg, rgba(15,23,42,0.2), rgba(15,23,42,0.6)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80');"></div>
+              <div class="project-thumb project-three"></div>
               <div class="project-body">
                 <span class="tag">Go</span>
                 <h4>Portfolio API</h4>
-                <p>Backend viết bằng Go phục vụ portfolio, contact form và cấu trúc project sạch, dễ mở rộng.</p>
+                <p data-i18n="projects.p3">A Go-powered backend for portfolio content, contact handling, and maintainable project structure.</p>
                 <a href="#contact">View project →</a>
               </div>
             </article>
@@ -253,34 +228,34 @@
       <section id="contact" class="section contact-section">
         <div class="container contact-grid">
           <div class="contact-copy">
-            <span class="eyebrow">Contact</span>
-            <h3>Drop Me a Line</h3>
-            <p>Hãy kết nối nếu bạn muốn hợp tác, làm việc chung hoặc thiết kế một sản phẩm web tốt hơn cho dự án của mình.</p>
+            <span class="eyebrow" data-i18n="contact.eyebrow">Contact</span>
+            <h3 data-i18n="contact.title">Let’s build something great</h3>
+            <p data-i18n="contact.description">I’m open to collaborations, freelance opportunities, and product ideas that need a thoughtful front-end and backend approach.</p>
 
             <ul class="contact-list">
               <li><strong>Email:</strong> lethamdaklak2005@gmail.com</li>
               <li><strong>Phone:</strong> +84 398 389 726</li>
-              <li><strong>Location:</strong> Đà Nẵng, Việt Nam</li>
+              <li><strong data-i18n="contact.location">Location:</strong> <span data-i18n="contact.locationValue">Da Nang, Vietnam</span></li>
             </ul>
           </div>
 
           <form id="contactForm" class="contact-form">
             <div class="field-group">
-              <label for="name">Họ tên</label>
-              <input id="name" name="name" type="text" placeholder="Nhập tên của bạn" required />
+              <label for="name" data-i18n="form.name">Full name</label>
+              <input id="name" name="name" type="text" data-i18n-placeholder="form.namePlaceholder" placeholder="Enter your name" required />
             </div>
 
             <div class="field-group">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="Nhập email" required />
+              <label for="email" data-i18n="form.email">Email</label>
+              <input id="email" name="email" type="email" data-i18n-placeholder="form.emailPlaceholder" placeholder="Enter your email" required />
             </div>
 
             <div class="field-group">
-              <label for="message">Tin nhắn</label>
-              <textarea id="message" name="message" rows="5" placeholder="Bạn muốn nói gì?" required></textarea>
+              <label for="message" data-i18n="form.message">Message</label>
+              <textarea id="message" name="message" rows="5" data-i18n-placeholder="form.messagePlaceholder" placeholder="What would you like to discuss?" required></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit Message</button>
+            <button type="submit" class="btn btn-primary" data-i18n="form.submit">Send message</button>
             <p id="formStatus" class="form-status" aria-live="polite"></p>
           </form>
         </div>
