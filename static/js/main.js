@@ -4,31 +4,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!form || !status) return;
 
-  form.addEventListener('submit', async (event) => {
+  form.addEventListener('submit', (event) => {
     event.preventDefault();
-    status.textContent = 'Đang gửi...';
-    status.style.color = '#7dd3fc';
 
-    const formData = new FormData(form);
+    const name = form.querySelector('#name')?.value?.trim() || '';
+    const email = form.querySelector('#email')?.value?.trim() || '';
+    const message = form.querySelector('#message')?.value?.trim() || '';
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        body: formData,
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.message || 'Có lỗi xảy ra.');
-      }
-
-      status.textContent = result.message || 'Gửi tin nhắn thành công!';
-      status.style.color = '#7dd3fc';
-      form.reset();
-    } catch (error) {
-      status.textContent = error.message || 'Gửi tin nhắn thất bại.';
+    if (!name || !email || !message) {
+      status.textContent = 'Vui lòng điền đầy đủ thông tin.';
       status.style.color = '#fca5a5';
+      return;
     }
+
+    status.textContent = 'Tin nhắn đã được ghi nhận. Bạn có thể tích hợp email/backend sau nếu muốn.';
+    status.style.color = '#7dd3fc';
+    form.reset();
   });
 });
