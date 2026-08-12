@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio của {{ .Name }}" />
+    <title>{{ .Name }} | {{ .Title }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a href="#home" class="brand">{{ .Name }}</a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#about">Giới thiệu</a>
+          <a href="#skills">Kỹ năng</a>
+          <a href="#experience">Kinh nghiệm</a>
+          <a href="#projects">Dự án</a>
+          <a href="#contact">Liên hệ</a>
+        </nav>
+        <a href="#contact" class="btn btn-primary">Hire Me</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <span class="eyebrow">Hello, I am</span>
+            <h1>{{ .Name }}</h1>
+            <h2>{{ .Title }}</h2>
+            <p>{{ .Subtitle }}</p>
+
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary">Xem dự án</a>
+              <a href="#contact" class="btn btn-secondary">Liên hệ</a>
+            </div>
+
+            <ul class="social-list">
+              <li><a href="https://github.com/BuiThiLeTham" target="_blank" rel="noreferrer">GitHub</a></li>
+              <li><a href="https://www.facebook.com/lethamsocute/" target="_blank" rel="noreferrer">Facebook</a></li>
+              <li><a href="mailto:{{ .Email }}">Email</a></li>
+            </ul>
+          </div>
+
+          <div class="hero-visual">
+            <div class="profile-card">
+              <div class="badge">Available for work</div>
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80" alt="Portrait of {{ .Name }}" />
+              <div class="mini-card">
+                <span>5+</span>
+                <small>Dự án</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">About Me</span>
+            <h3>Giới thiệu bản thân</h3>
+          </div>
+
+          <div class="about-grid">
+            <div class="about-card">
+              <p>{{ .Description }}</p>
+              <p>
+                Tôi thích học hỏi công nghệ mới, tập trung vào backend, API, giao diện hiện đại và tạo ra sản phẩm có giá trị thực tế cho người dùng.
+              </p>
+            </div>
+
+            <div class="info-card">
+              <ul>
+                <li><strong>Vị trí:</strong> Developer</li>
+                <li><strong>Địa điểm:</strong> {{ .Location }}</li>
+                <li><strong>Email:</strong> {{ .Email }}</li>
+                <li><strong>Phone:</strong> {{ .Phone }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section alt-bg">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Skills</span>
+            <h3>Kỹ năng chính</h3>
+          </div>
+
+          <div class="skills-grid">
+            {{ range .Skills }}
+            <div class="skill-item">
+              <div class="skill-header">
+                <span>{{ .Name }}</span>
+                <strong>{{ .Level }}%</strong>
+              </div>
+              <div class="progress"><i style="width: {{ .Level }}%"></i></div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Experience</span>
+            <h3>Học tập & phát triển</h3>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-year">2023 - Nay</span>
+                <h4>Đại học VKU</h4>
+                <p>Chuyên ngành Công nghệ Thông tin, tập trung phát triển kỹ năng lập trình, hệ thống, web và UI/UX.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <span class="timeline-year">2024 - Nay</span>
+                <h4>Frontend & Backend Practice</h4>
+                <p>Thực hành các dự án web với HTML, CSS, JavaScript, PHP, Go và thiết kế kiến trúc ứng dụng.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section project-section">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Portfolio</span>
+            <h3>Dự án tiêu biểu</h3>
+          </div>
+
+          <div class="project-grid">
+            {{ range .Projects }}
+            <article class="project-card">
+              <div class="project-thumb" style="background-image: linear-gradient(180deg, rgba(15,23,42,0.2), rgba(15,23,42,0.6)), url('{{ .Image }}');"></div>
+              <div class="project-body">
+                <span class="tag">{{ .Category }}</span>
+                <h4>{{ .Title }}</h4>
+                <p>{{ .Description }}</p>
+                <a href="{{ .URL }}" target="_blank" rel="noreferrer">View project →</a>
+              </div>
+            </article>
+            {{ end }}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact-section">
+        <div class="container contact-grid">
+          <div class="contact-copy">
+            <span class="eyebrow">Contact</span>
+            <h3>Drop Me a Line</h3>
+            <p>Hãy kết nối nếu bạn muốn hợp tác, làm việc chung hoặc thiết kế một sản phẩm web tốt hơn cho dự án của mình.</p>
+
+            <ul class="contact-list">
+              <li><strong>Email:</strong> {{ .Email }}</li>
+              <li><strong>Phone:</strong> {{ .Phone }}</li>
+              <li><strong>Location:</strong> {{ .Location }}</li>
+            </ul>
+          </div>
+
+          <form id="contactForm" class="contact-form">
+            <div class="field-group">
+              <label for="name">Họ tên</label>
+              <input id="name" name="name" type="text" placeholder="Nhập tên của bạn" required />
+            </div>
+
+            <div class="field-group">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="Nhập email" required />
+            </div>
+
+            <div class="field-group">
+              <label for="message">Tin nhắn</label>
+              <textarea id="message" name="message" rows="5" placeholder="Bạn muốn nói gì?" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Message</button>
+            <p id="formStatus" class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© {{ .Year }} {{ .Name }}. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+  </body>
+</html>
