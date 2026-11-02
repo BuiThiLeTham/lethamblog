@@ -943,113 +943,172 @@ function renderPortfolioSection(lang) {
 }
 
 const VKU_EDUCATION_DATA = {
-  code: 'VKU',
-  kicker: {
-    en: 'Academic Profile • Study • Build • Grow',
-    vi: 'Hồ sơ Học vấn • Học tập • Xây dựng • Phát triển',
-    ja: '学歴プロフィール • 学ぶ • 作る • 成長する'
+  badge: 'EDUCATION',
+  motto: {
+    en: 'Study  •  Grow  •  Shape the Future',
+    vi: 'Học tập  •  Phát triển  •  Kiến tạo tương lai',
+    ja: '学ぶ  •  成長する  •  未来を創る'
   },
-  fullName: {
-    en: 'Vietnam-Korea University of Information and Communication Technology',
-    vi: 'Vietnam-Korea University of Information and Communication Technology (Đại học CNTT & TT Việt – Hàn)',
-    ja: 'Vietnam-Korea University of Information and Communication Technology（ベトナム・韓国情報通信技術大学）'
+  logoSrc: './assets/img/logovku.svg.png',
+  campusSrc: './assets/img/imgVKU.jpg',
+  uniTitle: 'Vietnam-Korea University of Information and Communication Technology (VKU)',
+  uniSubtitle: {
+    en: 'Đại học CNTT & Truyền thông Việt – Hàn',
+    vi: 'Đại học CNTT & Truyền thông Việt – Hàn',
+    ja: 'ベトナム・韓国情報通信技術大学 (Đại học CNTT & Truyền thông Việt – Hàn)'
   },
-  statusBadge: {
+  location: {
+    en: 'Da Nang, Vietnam',
+    vi: 'Đà Nẵng, Việt Nam',
+    ja: 'ダナン、ベトナム'
+  },
+  period: {
     en: '2023 – Present',
-    vi: '2023 – Hiện tại',
-    ja: '2023年 – 現在'
+    vi: '2023 – Present',
+    ja: '2023 – Present'
   },
-  meta: [
+  summaryCards: [
     {
-      label: { en: 'Major', vi: 'Chuyên ngành (Major)', ja: '専攻 (Major)' },
-      value: { en: 'Computer Science', vi: 'Computer Science', ja: 'Computer Science（コンピュータサイエンス）' }
+      theme: 'blue',
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>`,
+      label: { en: 'Major', vi: 'Ngành học', ja: '専攻' },
+      value: 'Computer Science',
+      sub: { en: 'Khoa học Máy tính', vi: 'Khoa học Máy tính', ja: 'コンピュータサイエンス' }
     },
     {
-      label: { en: 'Degree', vi: 'Bằng cấp (Degree)', ja: '学位 (Degree)' },
-      value: { en: "Bachelor's Degree (In Progress)", vi: "Bachelor's Degree (In Progress)", ja: "Bachelor's Degree (In Progress / 在学中)" }
+      theme: 'purple',
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`,
+      label: { en: 'Degree', vi: 'Bằng cấp', ja: '学位' },
+      value: "Bachelor's Degree",
+      sub: { en: '(In Progress)', vi: '(In Progress)', ja: '(In Progress / 在学中)' }
     },
     {
-      label: { en: 'Period', vi: 'Thời gian (Period)', ja: '在学期間 (Period)' },
-      value: { en: '2023 – Present', vi: '2023 – Present', ja: '2023 – Present（2023年〜現在）' }
-    },
-    {
-      label: { en: 'Location', vi: 'Địa điểm (Location)', ja: '所在地 (Location)' },
-      value: { en: 'Da Nang, Vietnam', vi: 'Da Nang, Vietnam', ja: 'Da Nang, Vietnam（ダナン、ベトナム）' }
+      theme: 'green',
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
+      label: { en: 'Duration', vi: 'Thời gian', ja: '在学期間' },
+      value: '2023 – Present',
+      sub: { en: '4th Year Student', vi: 'Sinh viên năm 4', ja: '4年生（在学中）' }
     }
   ],
-  focusHeading: {
-    en: 'Academic Focus Areas',
-    vi: 'Lĩnh vực Trọng tâm (Focus Areas)',
-    ja: '重点学習・研究領域 (Focus Areas)'
+  interests: {
+    heading: {
+      en: 'Focus Areas',
+      vi: 'Lĩnh vực quan tâm',
+      ja: '関心・重点領域'
+    },
+    tags: ['Software Engineering', 'Web Development', 'Artificial Intelligence'],
+    description: {
+      en: 'Focused on software development, web programming, artificial intelligence, and system design thinking.',
+      vi: 'Tập trung vào phát triển phần mềm, lập trình web, trí tuệ nhân tạo và tư duy thiết kế hệ thống.',
+      ja: 'ソフトウェア開発、Webプログラミング、人工知能（AI）、およびシステム設計思考に注力。'
+    }
   },
-  focusAreas: [
+  highlightsHeading: {
+    en: 'Academic Highlights',
+    vi: 'Điểm nổi bật trong quá trình học tập',
+    ja: '大学での主な取り組み・強み'
+  },
+  highlights: [
     {
-      icon: 'layers',
-      title: 'Software Engineering',
-      subtitle: {
-        en: 'System design, OOP principles, relational databases & maintainable software architecture.',
-        vi: 'Thiết kế hệ thống, lập trình hướng đối tượng, cơ sở dữ liệu và kiến trúc phần mềm.',
-        ja: 'システム設計、オブジェクト指向設計、データベース構造、保守性の高いアーキテクチャ。'
-      }
+      theme: 'blue',
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+      title: {
+        en: 'Core Expertise',
+        vi: 'Kiến thức chuyên môn',
+        ja: '専門知識の習得'
+      },
+      desc: {
+        en: 'Solid foundation in programming, databases, and software development.',
+        vi: 'Nền tảng vững chắc về lập trình, cơ sở dữ liệu và phát triển phần mềm.',
+        ja: 'プログラミング、データベース、ソフトウェア開発の強固な基礎。'
+      },
+      tags: 'Programming  •  Database  •  System Design'
     },
     {
-      icon: 'globe',
-      title: 'Web Development',
-      subtitle: {
-        en: 'Full-stack web applications, RESTful APIs, modern frontend frameworks & responsive UI.',
-        vi: 'Ứng dụng web Full-stack, RESTful APIs, framework hiện đại và giao diện đa thiết bị.',
-        ja: 'フルスタックWeb開発、RESTful API設計、モダンフロントエンドとUI実装。'
-      }
+      theme: 'purple',
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+      title: {
+        en: 'Projects & Practice',
+        vi: 'Dự án & Thực hành',
+        ja: 'プロジェクト＆実践'
+      },
+      desc: {
+        en: 'Participated in academic projects, coursework capstones, and university research.',
+        vi: 'Tham gia các dự án học tập, đồ án và hoạt động nghiên cứu tại trường.',
+        ja: '学内プロジェクト、課題制作、研究活動に積極的に参加。'
+      },
+      tags: 'Teamwork  •  Project  •  Research'
     },
     {
-      icon: 'spark',
-      title: 'Artificial Intelligence',
-      subtitle: {
-        en: 'AI-assisted engineering, LLM integration workflows & intelligent automation systems.',
-        vi: 'Phát triển phần mềm ứng dụng AI, tích hợp LLM và tự động hóa thông minh.',
-        ja: 'AI支援開発、LLMパイプライン統合、インテリジェント自動化システムの探求。'
-      }
+      theme: 'green',
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>`,
+      title: {
+        en: 'Soft Skills',
+        vi: 'Kỹ năng mềm',
+        ja: 'ソフトスキル'
+      },
+      desc: {
+        en: 'Logical thinking, collaborative teamwork, and a continuous learning mindset.',
+        vi: 'Tư duy logic, khả năng làm việc nhóm và tinh thần học hỏi không ngừng.',
+        ja: '論理的思考力、チームワーク、そして常に学び続ける姿勢。'
+      },
+      tags: 'Communication  •  Problem Solving'
+    },
+    {
+      theme: 'amber',
+      icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+      title: {
+        en: 'Activities & Achievements',
+        vi: 'Hoạt động & Thành tích',
+        ja: '課外活動＆実績'
+      },
+      desc: {
+        en: 'Engaged in extracurricular activities, tech contests, and university programs.',
+        vi: 'Tham gia các hoạt động ngoại khóa, cuộc thi và chương trình của trường.',
+        ja: '課外活動、コンテスト、大学主催プログラムへの参加。'
+      },
+      tags: 'Events  •  Contest  •  Leadership'
     }
   ],
   journeyHeading: {
-    en: 'Academic Progression',
-    vi: 'Lộ trình Học tập',
-    ja: '学習ステップ (Academic Journey)'
+    en: 'Academic Journey',
+    vi: 'Hành trình học tập',
+    ja: '学習の歩み'
   },
   journey: [
     {
       year: '2023',
       label: {
-        en: 'CS Foundations & Programming',
-        vi: 'Nền tảng KHMT & Lập trình',
-        ja: '基礎プログラミング・CS理論'
+        en: 'Started studying at VKU',
+        vi: 'Bắt đầu học tại VKU',
+        ja: 'VKUに入学・学習開始'
       },
       active: false
     },
     {
       year: '2024',
       label: {
-        en: 'Databases, Web & Algorithms',
-        vi: 'Cơ sở dữ liệu, Web & Giải thuật',
-        ja: 'DB・Web開発・アルゴリズム'
+        en: 'Joined academic projects & extracurricular activities',
+        vi: 'Tham gia các dự án học tập và hoạt động ngoại khóa',
+        ja: '学内プロジェクトや課外活動に参加'
       },
       active: false
     },
     {
       year: '2025',
       label: {
-        en: 'Software Engineering & Internships',
-        vi: 'Kỹ thuật Phần mềm & Thực tập',
-        ja: 'ソフトウェア工学・実務インターン'
+        en: 'Internship at Edura (Web Developer Intern)',
+        vi: 'Thực tập tại Edura (Web Developer Intern)',
+        ja: 'Eduraにてインターンシップ (Web Developer Intern)'
       },
       active: false
     },
     {
       year: '2026 – Present',
       label: {
-        en: 'Senior Year • AI & Capstone Systems',
-        vi: 'Năm 4 • AI & Hệ thống Chuyên sâu',
-        ja: '4年次 • AI応用・高度なシステム開発'
+        en: 'Year 4 • Continuing studies & development',
+        vi: 'Năm 4 • Tiếp tục học tập & phát triển',
+        ja: '4年次 • さらなる学習と成長を継続'
       },
       active: true
     }
@@ -1063,97 +1122,146 @@ function renderVkuEducationSection(lang) {
   const currentLang = translations[lang] ? lang : DEFAULT_LANGUAGE;
   const d = VKU_EDUCATION_DATA;
 
-  const kicker = d.kicker[currentLang] || d.kicker.en;
-  const fullName = d.fullName[currentLang] || d.fullName.en;
-  const statusBadge = d.statusBadge[currentLang] || d.statusBadge.en;
-  const focusHeading = d.focusHeading[currentLang] || d.focusHeading.en;
+  const motto = d.motto[currentLang] || d.motto.en;
+  const uniSubtitle = d.uniSubtitle[currentLang] || d.uniSubtitle.en;
+  const locationText = d.location[currentLang] || d.location.en;
+  const interestHeading = d.interests.heading[currentLang] || d.interests.heading.en;
+  const interestDesc = d.interests.description[currentLang] || d.interests.description.en;
+  const highlightsHeading = d.highlightsHeading[currentLang] || d.highlightsHeading.en;
   const journeyHeading = d.journeyHeading[currentLang] || d.journeyHeading.en;
 
-  const metaHtml = d.meta.map((m) => `
-    <div class="vku-meta-card">
-      <span class="vku-meta-label">${m.label[currentLang] || m.label.en}</span>
-      <strong class="vku-meta-value">${m.value[currentLang] || m.value.en}</strong>
+  const summaryColsHtml = d.summaryCards.map((item) => `
+    <div class="vku-summary-item">
+      <div class="vku-summary-icon is-${item.theme}" aria-hidden="true">${item.icon}</div>
+      <div class="vku-summary-copy">
+        <span class="vku-summary-label">${item.label[currentLang] || item.label.en}</span>
+        <strong class="vku-summary-val">${item.value}</strong>
+        <span class="vku-summary-sub">${item.sub[currentLang] || item.sub.en}</span>
+      </div>
     </div>
   `).join('');
 
-  const focusHtml = d.focusAreas.map((f) => {
-    const iconSvg = TECH_ICONS[f.icon] || TECH_ICONS.code;
-    const sub = f.subtitle[currentLang] || f.subtitle.en;
-    return `
-      <div class="vku-focus-card">
-        <div class="vku-focus-icon" aria-hidden="true">${iconSvg}</div>
-        <div class="vku-focus-text">
-          <h5>${f.title}</h5>
-          <p>${sub}</p>
+  const interestTagsHtml = d.interests.tags.map((tag) => `
+    <span class="vku-interest-chip">${tag}</span>
+  `).join('');
+
+  const highlightsHtml = d.highlights.map((h) => `
+    <div class="vku-hl-card is-${h.theme}">
+      <div class="vku-hl-icon is-${h.theme}" aria-hidden="true">${h.icon}</div>
+      <h5 class="vku-hl-title">${h.title[currentLang] || h.title.en}</h5>
+      <p class="vku-hl-desc">${h.desc[currentLang] || h.desc.en}</p>
+      <span class="vku-hl-tags is-${h.theme}">${h.tags}</span>
+    </div>
+  `).join('');
+
+  const journeyHtml = d.journey.map((step) => {
+    if (step.active) {
+      return `
+        <div class="vku-tl-step is-active">
+          <div class="vku-tl-active-box">
+            <div class="vku-tl-active-copy">
+              <div class="vku-tl-year-row">
+                <span class="vku-tl-dot"></span>
+                <strong class="vku-tl-year">${step.year}</strong>
+              </div>
+              <span class="vku-tl-label">${step.label[currentLang] || step.label.en}</span>
+            </div>
+            <span class="vku-tl-arrow" aria-hidden="true">→</span>
+          </div>
         </div>
+      `;
+    }
+    return `
+      <div class="vku-tl-step">
+        <div class="vku-tl-year-row">
+          <span class="vku-tl-dot"></span>
+          <strong class="vku-tl-year">${step.year}</strong>
+        </div>
+        <span class="vku-tl-label">${step.label[currentLang] || step.label.en}</span>
       </div>
     `;
   }).join('');
 
-  const journeyHtml = d.journey.map((step) => `
-    <div class="vku-journey-step ${step.active ? 'is-current' : ''}">
-      <div class="vku-step-marker">
-        <span class="vku-step-dot"></span>
-        <span class="vku-step-year">${step.year}</span>
-      </div>
-      <span class="vku-step-label">${step.label[currentLang] || step.label.en}</span>
-    </div>
-  `).join('');
-
   row.innerHTML = `
-    <article class="vku-edu-card">
-      <div class="vku-edu-glow" aria-hidden="true"></div>
-      <div class="vku-circuit-deco" aria-hidden="true">
-        <span>&lt;CS /&gt;</span>
-        <span>•</span>
-        <span>SE</span>
-        <span>•</span>
-        <span>AI</span>
-      </div>
-
-      <div class="vku-top-banner">
-        <div class="vku-brand-group">
-          <div class="vku-crest" aria-label="VKU University">
-            <div class="vku-crest-bars" aria-hidden="true">
-              <span class="bar-red"></span>
-              <span class="bar-blue"></span>
-              <span class="bar-gold"></span>
-            </div>
-            <strong class="vku-crest-text">${d.code}</strong>
-            <small class="vku-crest-sub">DANANG UNIVERSITY</small>
+    <article class="vku-profile-board">
+      <!-- Top Hero Header -->
+      <div class="vku-hero-row">
+        <div class="vku-hero-left">
+          <div class="vku-top-pill-bar">
+            <span class="vku-edu-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              ${d.badge}
+            </span>
+            <span class="vku-top-divider">|</span>
+            <span class="vku-top-motto">${motto}</span>
           </div>
 
-          <div class="vku-title-block">
-            <div class="vku-kicker-row">
-              <span class="showcase-kicker">${kicker}</span>
-              <span class="vku-period-badge">
-                <span class="vku-live-dot"></span>
-                ${statusBadge}
-              </span>
+          <div class="vku-identity-row">
+            <div class="vku-logo-box">
+              <img src="${d.logoSrc}" alt="VKU Logo" />
+              <span>DANANG UNIVERSITY</span>
             </div>
-            <h3 class="vku-uni-name">${fullName}</h3>
+
+            <div class="vku-identity-text">
+              <h3 class="vku-main-title">${d.uniTitle}</h3>
+              <p class="vku-sub-title">${uniSubtitle}</p>
+              <div class="vku-loc-bar">
+                <span class="vku-loc-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  ${locationText}
+                </span>
+                <span class="vku-loc-sep">|</span>
+                <span class="vku-loc-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  ${d.period.en}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="vku-mini-thumb" aria-hidden="true">
-          <img src="./assets/img/Developer.png" alt="" />
+        <div class="vku-hero-campus">
+          <img src="${d.campusSrc}" alt="VKU Campus" />
+          <div class="vku-campus-quote" aria-hidden="true">Knowledge<br/>Connects<br/>the World</div>
         </div>
       </div>
 
-      <div class="vku-meta-grid">
-        ${metaHtml}
-      </div>
+      <!-- Second Row: 3-Col Summary Card + Focus Areas Card -->
+      <div class="vku-middle-row">
+        <div class="vku-summary-board">
+          ${summaryColsHtml}
+        </div>
 
-      <div class="vku-focus-block">
-        <span class="vku-sub-heading">${focusHeading}</span>
-        <div class="vku-focus-grid">
-          ${focusHtml}
+        <div class="vku-interest-board">
+          <div class="vku-section-title-inline">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <h4>${interestHeading}</h4>
+          </div>
+          <div class="vku-interest-chips">
+            ${interestTagsHtml}
+          </div>
+          <p class="vku-interest-desc">${interestDesc}</p>
         </div>
       </div>
 
-      <div class="vku-journey-block">
-        <span class="vku-sub-heading">${journeyHeading}</span>
-        <div class="vku-journey-track">
+      <!-- Third Row: 4 Academic Highlight Cards -->
+      <div class="vku-highlights-section">
+        <div class="vku-section-title-inline">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+          <h4>${highlightsHeading}</h4>
+        </div>
+        <div class="vku-hl-grid">
+          ${highlightsHtml}
+        </div>
+      </div>
+
+      <!-- Fourth Row: Horizontal Academic Journey Box -->
+      <div class="vku-timeline-box">
+        <div class="vku-section-title-inline">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <h4>${journeyHeading}</h4>
+        </div>
+        <div class="vku-tl-track">
           ${journeyHtml}
         </div>
       </div>
