@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,7 +17,7 @@
 
     <header class="site-header">
       <div class="container nav">
-        <a href="#home" class="brand">Le Tham</a>
+        <a href="#home" class="brand" data-i18n="nav.brand">ブイ・ティ・ㇾ・タム</a>
 
         <nav class="nav-links" aria-label="Main navigation">
           <a href="#about" data-i18n="nav.about">About</a>
@@ -28,14 +28,43 @@
         </nav>
 
         <div class="header-actions">
-          <label class="language-switch" aria-label="Language selector">
-            <span>🌐</span>
-            <select id="languageSelect" aria-label="Select language">
-              <option value="en">EN</option>
+          <div class="lang-dropdown" id="langDropdown">
+            <button type="button" class="lang-dropdown-toggle" id="langDropdownToggle" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language">
+              <span class="lang-globe" aria-hidden="true">🌐</span>
+              <span class="lang-current-code" id="langCurrentCode">JP</span>
+              <svg class="lang-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <ul class="lang-dropdown-menu" id="langDropdownMenu" role="listbox" aria-label="Select language">
+              <li class="lang-option active" role="option" aria-selected="true" data-lang="ja" data-code="JP">
+                <span class="lang-badge">JP</span>
+                <span class="lang-label">日本語</span>
+                <svg class="lang-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </li>
+              <li class="lang-option" role="option" aria-selected="false" data-lang="vi" data-code="VI">
+                <span class="lang-badge">VI</span>
+                <span class="lang-label">Tiếng Việt</span>
+                <svg class="lang-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </li>
+              <li class="lang-option" role="option" aria-selected="false" data-lang="en" data-code="EN">
+                <span class="lang-badge">EN</span>
+                <span class="lang-label">English</span>
+                <svg class="lang-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </li>
+            </ul>
+            <select id="languageSelect" aria-label="Select language" hidden>
+              <option value="ja" selected>JP</option>
               <option value="vi">VI</option>
-              <option value="ja">JP</option>
+              <option value="en">EN</option>
             </select>
-          </label>
+          </div>
           <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
           <a href="#contact" class="btn btn-primary" data-i18n="nav.hire">Hire Me</a>
         </div>
@@ -99,7 +128,9 @@
           <div class="about-grid">
             <div class="glass-card">
               <p data-i18n="about.text1">{{ .Description }}</p>
-              <p data-i18n="about.text2">I enjoy learning new technologies, building scalable interfaces, and turning ideas into practical digital solutions.</p>
+              <p data-i18n="about.text2">私はソフトウェア開発、特にウェブ開発に興味があります。Eduraでのインターンシップでは、PHP、Laravel、MySQLを使ったウェブシステムの開発と保守を経験しました。また、American Pizza Companyでは、ソフトウェアのテストを経験しました。</p>
+              <p data-i18n="about.text3">現在は、React、TypeScript、Next.jsなどの技術も、個人プロジェクトやチームプロジェクトを通して学んでいます。</p>
+              <p data-i18n="about.text4">私の強みは、慎重に仕事を進めることと、自分から積極的に学ぶことです。これからも技術力を高め、役に立つ製品を作りながら、プロのソフトウェアエンジニアを目指して成長していきたいです。</p>
             </div>
 
             <div class="glass-card compact-card">
@@ -114,49 +145,34 @@
         </div>
       </section>
 
-      <section id="skills" class="section alt-bg">
+      <section id="skills" class="section tech-section">
         <div class="container">
-          <div class="section-heading">
-            <span class="eyebrow" data-i18n="skills.eyebrow">Skills</span>
-            <h3 data-i18n="skills.title">Core capabilities</h3>
+          <div class="section-heading tech-heading">
+            <div>
+              <span class="eyebrow" data-i18n="skills.eyebrow">Technology & Expertise</span>
+              <h3 data-i18n="skills.title">Modern Developer Ecosystem</h3>
+              <p class="tech-subtitle" data-i18n="skills.subtitle">
+                Exploring Agentic AI, LLM architectures, full-stack product engineering, and automated growth systems.
+              </p>
+            </div>
+            <div class="tech-filters" id="techFilters" role="tablist" aria-label="Filter technology categories"></div>
           </div>
 
-          <div class="skills-grid">
-            {{ range .Skills }}
-            <div class="skill-card">
-              <div class="skill-header"><span>{{ .Name }}</span><strong>{{ .Level }}%</strong></div>
-              <div class="progress"><i style="width: {{ .Level }}%"></i></div>
-            </div>
-            {{ end }}
-          </div>
+          <div class="tech-bento-grid" id="techGrid"></div>
         </div>
       </section>
 
-      <section id="experience" class="section">
+      <section id="experience" class="section experience-section">
         <div class="container">
-          <div class="section-heading">
-            <span class="eyebrow" data-i18n="experience.eyebrow">Experience</span>
-            <h3 data-i18n="experience.title">Learning & growth</h3>
+          <div class="section-heading exp-heading">
+            <span class="eyebrow" data-i18n="experience.eyebrow">Experience & Learning Journey</span>
+            <h3 data-i18n="experience.title">Academic, Internship & Practical Milestones</h3>
+            <p class="exp-subtitle" data-i18n="experience.subtitle">
+              A progression of academic foundations, real-world internships in web development and QA testing, and continuous hands-on product building.
+            </p>
           </div>
 
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <span class="timeline-year">2023 - Present</span>
-                <h4>VKU University</h4>
-                <p data-i18n="experience.item1">Focused on software engineering, web development, systems thinking, and UI/UX design.</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <span class="timeline-year">2024 - Present</span>
-                <h4 data-i18n="experience.item2Title">Frontend & Backend Practice</h4>
-                <p data-i18n="experience.item2">Building projects with HTML, CSS, JavaScript, PHP, Go and improving software architecture.</p>
-              </div>
-            </div>
-          </div>
+          <div class="exp-timeline" id="experienceTimeline"></div>
         </div>
       </section>
 
@@ -167,19 +183,7 @@
             <h3 data-i18n="projects.title">Featured projects</h3>
           </div>
 
-          <div class="project-grid">
-            {{ range .Projects }}
-            <article class="project-card">
-              <div class="project-thumb" style="background-image: linear-gradient(180deg, rgba(15,23,42,0.2), rgba(15,23,42,0.6)), url('{{ .Image }}');"></div>
-              <div class="project-body">
-                <span class="tag">{{ .Category }}</span>
-                <h4>{{ .Title }}</h4>
-                <p data-i18n="projects.p1">{{ .Description }}</p>
-                <a href="{{ .URL }}" target="_blank" rel="noreferrer">View project →</a>
-              </div>
-            </article>
-            {{ end }}
-          </div>
+          <div class="portfolio-showcase" id="portfolioGrid"></div>
         </div>
       </section>
 

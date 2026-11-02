@@ -60,7 +60,7 @@ func main() {
 			Name:        "Bùi Thị Lệ Thắm",
 			Title:       "Developer • Web Developer • Problem Solver",
 			Subtitle:    "Tôi xây dựng các sản phẩm web hiện đại, rõ ràng, tốc độ nhanh và thân thiện với người dùng.",
-			Description: "Tôi là một lập trình viên trẻ với niềm đam mê phát triển web, xây dựng trải nghiệm người dùng tốt và tạo ra những sản phẩm có giá trị thực tế.",
+			Description: "Xin chào! Tôi là Bùi Thị Lệ Thắm, sinh viên năm 4 ngành Khoa học Máy tính tại Trường Đại học Công nghệ Thông tin và Truyền thông Việt – Hàn (VKU).",
 			Location:    "Đà Nẵng, Việt Nam",
 			Email:       "lethamdaklak2005@gmail.com",
 			Phone:       "+84 398 389 726",
