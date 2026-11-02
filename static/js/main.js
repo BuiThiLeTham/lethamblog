@@ -631,9 +631,36 @@ const PORTFOLIO_DATA = {
       role: { en: 'Role:', vi: 'Role:', ja: '担当役割:' },
       duration: { en: 'Duration:', vi: 'Duration:', ja: '期間:' },
       overview: { en: 'Project Overview', vi: 'Project Overview', ja: 'プロジェクト概要 (Project Overview)' },
+      gallery: { en: 'System Interface Previews (Click to enlarge)', vi: 'Hình ảnh giao diện thực tế (Nhấn để phóng to)', ja: 'システム画面プレビュー（クリックで拡大）' },
       features: { en: 'Key System Features (KOTORA NJES)', vi: 'Các chức năng trên hệ thống (KOTORA NJES)', ja: '主なシステム機能 (KOTORA NJES)' },
       responsibilities: { en: 'My Responsibilities', vi: 'My Responsibilities (Vai trò đảm nhiệm)', ja: '担当業務 (My Responsibilities)' }
     },
+    screenshots: [
+      {
+        src: './assets/img/EDURA1.png',
+        caption: {
+          en: 'JLPT Mock Examination Portal (N5 – N1)',
+          vi: 'Cổng thi thử trực tuyến JLPT (N5 – N1)',
+          ja: 'JLPT オンライン模擬試験ポータル (N5 – N1)'
+        }
+      },
+      {
+        src: './assets/img/EDURA2.png',
+        caption: {
+          en: 'Phased JLPT Mock Exam Stages (Stage 1 – 3)',
+          vi: 'Các đợt thi thử JLPT theo từng giai đoạn (Đợt 1 – 3)',
+          ja: '段階別 JLPT 模擬試験セッション（第1回〜第3回）'
+        }
+      },
+      {
+        src: './assets/img/EDURA3.png',
+        caption: {
+          en: 'KOTORA NJES Learning Platform & Quick Exam Access',
+          vi: 'Nền tảng học tập KOTORA NJES & Truy cập nhanh bài kiểm tra',
+          ja: 'KOTORA NJES 学習プラットフォーム＆オンライン試験アクセス'
+        }
+      }
+    ],
     overview: {
       en: 'Edura is an online education platform supporting Japanese language learning and assessment. The KOTORA NJES system provides phased JLPT mock examinations from N5 to N1, allowing learners to select levels, take timed tests, and practice progressively.',
       vi: 'Edura là nền tảng giáo dục trực tuyến hỗ trợ hoạt động học tập và kiểm tra tiếng Nhật. Hệ thống KOTORA NJES cung cấp các đợt thi thử JLPT từ N5 đến N1, cho phép học viên lựa chọn cấp độ, tham gia bài thi theo thời gian quy định và luyện tập theo từng giai đoạn.',
@@ -754,12 +781,31 @@ function renderPortfolioSection(lang) {
   const labelRole = f.labels.role[currentLang] || f.labels.role.en;
   const labelDuration = f.labels.duration[currentLang] || f.labels.duration.en;
   const labelOverview = f.labels.overview[currentLang] || f.labels.overview.en;
+  const labelGallery = f.labels.gallery[currentLang] || f.labels.gallery.en;
   const labelFeatures = f.labels.features[currentLang] || f.labels.features.en;
   const labelResponsibilities = f.labels.responsibilities[currentLang] || f.labels.responsibilities.en;
 
   const featuresHtml = featuresList.map((item) => `<li>${item}</li>`).join('');
   const responsibilitiesHtml = responsibilitiesList.map((item) => `<li>${item}</li>`).join('');
   const stackHtml = f.techStack.map((tech) => `<span class="portfolio-tech-pill">${tech}</span>`).join('');
+
+  const screenshotsHtml = f.screenshots.map((shot, idx) => {
+    const cap = shot.caption[currentLang] || shot.caption.en;
+    return `
+      <figure class="edura-shot-card" data-shot-src="${shot.src}" data-shot-caption="${cap}" tabindex="0" role="button" aria-label="${cap}">
+        <div class="edura-shot-browser">
+          <span class="browser-dot"></span>
+          <span class="browser-dot"></span>
+          <span class="browser-dot"></span>
+          <span class="browser-title">0${idx + 1} • KOTORA NJES</span>
+        </div>
+        <div class="edura-shot-img-wrap">
+          <img src="${shot.src}" alt="${cap}" loading="lazy" />
+        </div>
+        <figcaption class="edura-shot-caption">${cap}</figcaption>
+      </figure>
+    `;
+  }).join('');
 
   const secondaryCardsHtml = PORTFOLIO_DATA.projects.map((p) => {
     const desc = p.description[currentLang] || p.description.en;
@@ -799,6 +845,13 @@ function renderPortfolioSection(lang) {
         <p>${overviewText}</p>
       </div>
 
+      <div class="edura-gallery-section">
+        <h5 class="edura-gallery-heading">${labelGallery}</h5>
+        <div class="edura-gallery-grid">
+          ${screenshotsHtml}
+        </div>
+      </div>
+
       <div class="edura-columns">
         <div class="edura-col-box">
           <h5>
@@ -829,6 +882,282 @@ function renderPortfolioSection(lang) {
     <div class="project-grid project-grid-two">
       ${secondaryCardsHtml}
     </div>
+  `;
+
+  let lightbox = document.getElementById('eduraLightbox');
+  if (!lightbox) {
+    lightbox = document.createElement('div');
+    lightbox.id = 'eduraLightbox';
+    lightbox.className = 'edura-lightbox';
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightbox.innerHTML = `
+      <div class="edura-lightbox-content">
+        <button type="button" class="edura-lightbox-close" aria-label="Close preview">&times;</button>
+        <img class="edura-lightbox-img" src="" alt="" />
+        <p class="edura-lightbox-caption"></p>
+      </div>
+    `;
+    document.body.appendChild(lightbox);
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+    };
+
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox || event.target.closest('.edura-lightbox-close')) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
+        closeLightbox();
+      }
+    });
+  }
+
+  container.querySelectorAll('.edura-shot-card').forEach((card) => {
+    const openShot = () => {
+      const src = card.dataset.shotSrc;
+      const cap = card.dataset.shotCaption;
+      const img = lightbox.querySelector('.edura-lightbox-img');
+      const capEl = lightbox.querySelector('.edura-lightbox-caption');
+      if (img && src) {
+        img.src = src;
+        img.alt = cap || '';
+      }
+      if (capEl) capEl.textContent = cap || '';
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    };
+
+    card.addEventListener('click', openShot);
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openShot();
+      }
+    });
+  });
+}
+
+const VKU_EDUCATION_DATA = {
+  code: 'VKU',
+  kicker: {
+    en: 'Academic Profile • Study • Build • Grow',
+    vi: 'Hồ sơ Học vấn • Học tập • Xây dựng • Phát triển',
+    ja: '学歴プロフィール • 学ぶ • 作る • 成長する'
+  },
+  fullName: {
+    en: 'Vietnam-Korea University of Information and Communication Technology',
+    vi: 'Vietnam-Korea University of Information and Communication Technology (Đại học CNTT & TT Việt – Hàn)',
+    ja: 'Vietnam-Korea University of Information and Communication Technology（ベトナム・韓国情報通信技術大学）'
+  },
+  statusBadge: {
+    en: '2023 – Present',
+    vi: '2023 – Hiện tại',
+    ja: '2023年 – 現在'
+  },
+  meta: [
+    {
+      label: { en: 'Major', vi: 'Chuyên ngành (Major)', ja: '専攻 (Major)' },
+      value: { en: 'Computer Science', vi: 'Computer Science', ja: 'Computer Science（コンピュータサイエンス）' }
+    },
+    {
+      label: { en: 'Degree', vi: 'Bằng cấp (Degree)', ja: '学位 (Degree)' },
+      value: { en: "Bachelor's Degree (In Progress)", vi: "Bachelor's Degree (In Progress)", ja: "Bachelor's Degree (In Progress / 在学中)" }
+    },
+    {
+      label: { en: 'Period', vi: 'Thời gian (Period)', ja: '在学期間 (Period)' },
+      value: { en: '2023 – Present', vi: '2023 – Present', ja: '2023 – Present（2023年〜現在）' }
+    },
+    {
+      label: { en: 'Location', vi: 'Địa điểm (Location)', ja: '所在地 (Location)' },
+      value: { en: 'Da Nang, Vietnam', vi: 'Da Nang, Vietnam', ja: 'Da Nang, Vietnam（ダナン、ベトナム）' }
+    }
+  ],
+  focusHeading: {
+    en: 'Academic Focus Areas',
+    vi: 'Lĩnh vực Trọng tâm (Focus Areas)',
+    ja: '重点学習・研究領域 (Focus Areas)'
+  },
+  focusAreas: [
+    {
+      icon: 'layers',
+      title: 'Software Engineering',
+      subtitle: {
+        en: 'System design, OOP principles, relational databases & maintainable software architecture.',
+        vi: 'Thiết kế hệ thống, lập trình hướng đối tượng, cơ sở dữ liệu và kiến trúc phần mềm.',
+        ja: 'システム設計、オブジェクト指向設計、データベース構造、保守性の高いアーキテクチャ。'
+      }
+    },
+    {
+      icon: 'globe',
+      title: 'Web Development',
+      subtitle: {
+        en: 'Full-stack web applications, RESTful APIs, modern frontend frameworks & responsive UI.',
+        vi: 'Ứng dụng web Full-stack, RESTful APIs, framework hiện đại và giao diện đa thiết bị.',
+        ja: 'フルスタックWeb開発、RESTful API設計、モダンフロントエンドとUI実装。'
+      }
+    },
+    {
+      icon: 'spark',
+      title: 'Artificial Intelligence',
+      subtitle: {
+        en: 'AI-assisted engineering, LLM integration workflows & intelligent automation systems.',
+        vi: 'Phát triển phần mềm ứng dụng AI, tích hợp LLM và tự động hóa thông minh.',
+        ja: 'AI支援開発、LLMパイプライン統合、インテリジェント自動化システムの探求。'
+      }
+    }
+  ],
+  journeyHeading: {
+    en: 'Academic Progression',
+    vi: 'Lộ trình Học tập',
+    ja: '学習ステップ (Academic Journey)'
+  },
+  journey: [
+    {
+      year: '2023',
+      label: {
+        en: 'CS Foundations & Programming',
+        vi: 'Nền tảng KHMT & Lập trình',
+        ja: '基礎プログラミング・CS理論'
+      },
+      active: false
+    },
+    {
+      year: '2024',
+      label: {
+        en: 'Databases, Web & Algorithms',
+        vi: 'Cơ sở dữ liệu, Web & Giải thuật',
+        ja: 'DB・Web開発・アルゴリズム'
+      },
+      active: false
+    },
+    {
+      year: '2025',
+      label: {
+        en: 'Software Engineering & Internships',
+        vi: 'Kỹ thuật Phần mềm & Thực tập',
+        ja: 'ソフトウェア工学・実務インターン'
+      },
+      active: false
+    },
+    {
+      year: '2026 – Present',
+      label: {
+        en: 'Senior Year • AI & Capstone Systems',
+        vi: 'Năm 4 • AI & Hệ thống Chuyên sâu',
+        ja: '4年次 • AI応用・高度なシステム開発'
+      },
+      active: true
+    }
+  ]
+};
+
+function renderVkuEducationSection(lang) {
+  const row = document.querySelector('.showcase-row');
+  if (!row) return;
+
+  const currentLang = translations[lang] ? lang : DEFAULT_LANGUAGE;
+  const d = VKU_EDUCATION_DATA;
+
+  const kicker = d.kicker[currentLang] || d.kicker.en;
+  const fullName = d.fullName[currentLang] || d.fullName.en;
+  const statusBadge = d.statusBadge[currentLang] || d.statusBadge.en;
+  const focusHeading = d.focusHeading[currentLang] || d.focusHeading.en;
+  const journeyHeading = d.journeyHeading[currentLang] || d.journeyHeading.en;
+
+  const metaHtml = d.meta.map((m) => `
+    <div class="vku-meta-card">
+      <span class="vku-meta-label">${m.label[currentLang] || m.label.en}</span>
+      <strong class="vku-meta-value">${m.value[currentLang] || m.value.en}</strong>
+    </div>
+  `).join('');
+
+  const focusHtml = d.focusAreas.map((f) => {
+    const iconSvg = TECH_ICONS[f.icon] || TECH_ICONS.code;
+    const sub = f.subtitle[currentLang] || f.subtitle.en;
+    return `
+      <div class="vku-focus-card">
+        <div class="vku-focus-icon" aria-hidden="true">${iconSvg}</div>
+        <div class="vku-focus-text">
+          <h5>${f.title}</h5>
+          <p>${sub}</p>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  const journeyHtml = d.journey.map((step) => `
+    <div class="vku-journey-step ${step.active ? 'is-current' : ''}">
+      <div class="vku-step-marker">
+        <span class="vku-step-dot"></span>
+        <span class="vku-step-year">${step.year}</span>
+      </div>
+      <span class="vku-step-label">${step.label[currentLang] || step.label.en}</span>
+    </div>
+  `).join('');
+
+  row.innerHTML = `
+    <article class="vku-edu-card">
+      <div class="vku-edu-glow" aria-hidden="true"></div>
+      <div class="vku-circuit-deco" aria-hidden="true">
+        <span>&lt;CS /&gt;</span>
+        <span>•</span>
+        <span>SE</span>
+        <span>•</span>
+        <span>AI</span>
+      </div>
+
+      <div class="vku-top-banner">
+        <div class="vku-brand-group">
+          <div class="vku-crest" aria-label="VKU University">
+            <div class="vku-crest-bars" aria-hidden="true">
+              <span class="bar-red"></span>
+              <span class="bar-blue"></span>
+              <span class="bar-gold"></span>
+            </div>
+            <strong class="vku-crest-text">${d.code}</strong>
+            <small class="vku-crest-sub">DANANG UNIVERSITY</small>
+          </div>
+
+          <div class="vku-title-block">
+            <div class="vku-kicker-row">
+              <span class="showcase-kicker">${kicker}</span>
+              <span class="vku-period-badge">
+                <span class="vku-live-dot"></span>
+                ${statusBadge}
+              </span>
+            </div>
+            <h3 class="vku-uni-name">${fullName}</h3>
+          </div>
+        </div>
+
+        <div class="vku-mini-thumb" aria-hidden="true">
+          <img src="./assets/img/Developer.png" alt="" />
+        </div>
+      </div>
+
+      <div class="vku-meta-grid">
+        ${metaHtml}
+      </div>
+
+      <div class="vku-focus-block">
+        <span class="vku-sub-heading">${focusHeading}</span>
+        <div class="vku-focus-grid">
+          ${focusHtml}
+        </div>
+      </div>
+
+      <div class="vku-journey-block">
+        <span class="vku-sub-heading">${journeyHeading}</span>
+        <div class="vku-journey-track">
+          ${journeyHtml}
+        </div>
+      </div>
+    </article>
   `;
 }
 
@@ -973,6 +1302,7 @@ function applyTranslations(lang, persist = false) {
     });
   }
 
+  renderVkuEducationSection(currentLang);
   renderTechSection(currentLang);
   renderExperienceSection(currentLang);
   renderPortfolioSection(currentLang);
@@ -1019,6 +1349,12 @@ function applyTranslations(lang, persist = false) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Bust browser cache for hero portrait image (profile3.jpg)
+  const heroPortrait = document.querySelector('.photo-frame img');
+  if (heroPortrait) {
+    heroPortrait.src = './assets/img/profile3.jpg?v=20261102';
+  }
+
   // Upgrade legacy <label class="language-switch"> into custom dropdown if server was not restarted yet
   const legacySwitch = document.querySelector('.language-switch');
   if (legacySwitch && !document.getElementById('langDropdown')) {

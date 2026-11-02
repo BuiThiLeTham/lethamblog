@@ -511,61 +511,370 @@ html[lang='ja'] .hero h1 {
 }
 
 .showcase-row {
-  margin-top: 42px;
-}
-
-.showcase-card {
-  width: min(720px, 100%);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.06fr 0.94fr;
-  align-items: center;
-  gap: 22px;
-  padding: 22px;
-  border-radius: 28px;
-  background: rgba(255, 255, 255, 0.22);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
-}
-
-.showcase-visual {
-  overflow: hidden;
-  border-radius: 20px;
-  border: 1px solid var(--line);
-}
-
-.showcase-visual img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-}
-
-.showcase-copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 4px;
+  margin-top: 52px;
 }
 
 .showcase-kicker {
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--primary-strong);
+  font-weight: 800;
+}
+
+/* Premium VKU Education Profile Card */
+.vku-edu-card {
+  position: relative;
+  width: 100%;
+  padding: 2rem 2.2rem;
+  border-radius: 30px;
+  background: linear-gradient(145deg, var(--card), rgba(118, 185, 255, 0.14));
+  border: 1px solid rgba(61, 142, 247, 0.25);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.26s ease;
+}
+
+body[data-theme='dark'] .vku-edu-card {
+  background: linear-gradient(145deg, rgba(16, 34, 52, 0.88), rgba(11, 23, 36, 0.82));
+  border-color: rgba(127, 195, 255, 0.25);
+}
+
+.vku-edu-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(61, 142, 247, 0.45);
+}
+
+.vku-edu-glow {
+  position: absolute;
+  top: -100px;
+  right: -80px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(61, 142, 247, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.vku-circuit-deco {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.26rem 0.72rem;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  opacity: 0.85;
+}
+
+.vku-top-banner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 1.5rem;
+}
+
+.vku-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.vku-crest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 108px;
+  padding: 0.9rem 1rem;
+  border-radius: 22px;
+  background: var(--card);
+  border: 1px solid rgba(61, 142, 247, 0.28);
+  box-shadow: 0 12px 28px rgba(42, 98, 150, 0.14);
+  flex-shrink: 0;
+}
+
+.vku-crest-bars {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 6px;
+}
+
+.vku-crest-bars span {
+  width: 16px;
+  height: 5px;
+  border-radius: 999px;
+}
+
+.vku-crest-bars .bar-red { background: #e11d48; }
+.vku-crest-bars .bar-blue { background: #2563eb; }
+.vku-crest-bars .bar-gold { background: #f59e0b; }
+
+.vku-crest-text {
+  font-size: 1.95rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, #1d4ed8, #e11d48 58%, #d97706);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+body[data-theme='dark'] .vku-crest-text {
+  background: linear-gradient(135deg, #60a5fa, #fb7185 58%, #fbbf24);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.vku-crest-sub {
+  margin-top: 5px;
+  font-size: 0.54rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+.vku-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vku-kicker-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.vku-period-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.22rem 0.68rem;
+  border-radius: 999px;
+  background: rgba(61, 142, 247, 0.12);
+  border: 1px solid rgba(61, 142, 247, 0.28);
+  color: var(--primary-strong);
+  font-size: 0.72rem;
   font-weight: 700;
 }
 
-.showcase-copy strong {
-  font-size: clamp(2.4rem, 4vw, 4.2rem);
-  line-height: 0.95;
+.vku-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
 }
 
-.showcase-copy small {
+.vku-uni-name {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(1.22rem, 2.2vw, 1.68rem);
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  max-width: 680px;
+}
+
+.vku-mini-thumb {
+  width: 86px;
+  height: 86px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--card);
+  flex-shrink: 0;
+  margin-top: 18px;
+}
+
+.vku-mini-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vku-meta-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 1.45rem;
+}
+
+.vku-meta-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0.85rem 1.05rem;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+
+.vku-meta-label {
   color: var(--muted);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+.vku-meta-value {
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.vku-sub-heading {
+  display: inline-block;
+  margin-bottom: 0.65rem;
+  color: var(--primary-strong);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.vku-focus-block {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1.45rem;
+}
+
+.vku-focus-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.vku-focus-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.vku-focus-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(61, 142, 247, 0.42);
+}
+
+.vku-focus-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  background: rgba(61, 142, 247, 0.12);
+  color: var(--primary-strong);
+  flex-shrink: 0;
+}
+
+.vku-focus-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.vku-focus-text h5 {
+  margin: 0 0 0.25rem;
+  color: var(--text);
+  font-size: 0.94rem;
+  font-weight: 700;
+}
+
+.vku-focus-text p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.vku-journey-block {
+  position: relative;
+  z-index: 1;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--line);
+}
+
+.vku-journey-track {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.vku-journey-step {
+  position: relative;
+  padding: 0.72rem 0.9rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.36);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+body[data-theme='dark'] .vku-journey-step {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.vku-journey-step.is-current {
+  background: linear-gradient(135deg, rgba(61, 142, 247, 0.15), rgba(143, 227, 213, 0.18));
+  border-color: rgba(61, 142, 247, 0.45);
+}
+
+.vku-step-marker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vku-step-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--primary-strong);
+}
+
+.vku-journey-step.is-current .vku-step-dot {
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.vku-step-year {
+  color: var(--primary-strong);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.vku-step-label {
+  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.35;
 }
 
 .section {
@@ -1314,6 +1623,164 @@ body[data-theme='dark'] .edura-case-card {
   line-height: 1.68;
 }
 
+.edura-gallery-section {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1.4rem;
+}
+
+.edura-gallery-heading {
+  margin: 0 0 0.75rem;
+  color: var(--primary-strong);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.edura-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.edura-shot-card {
+  margin: 0;
+  border-radius: 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.24s ease, box-shadow 0.24s ease;
+}
+
+.edura-shot-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(61, 142, 247, 0.5);
+  box-shadow: 0 16px 34px rgba(42, 98, 150, 0.2);
+}
+
+.edura-shot-browser {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(61, 142, 247, 0.06);
+}
+
+.browser-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(148, 163, 184, 0.45);
+}
+
+.browser-dot:nth-child(1) { background: #fb7185; }
+.browser-dot:nth-child(2) { background: #fbbf24; }
+.browser-dot:nth-child(3) { background: #34d399; }
+
+.browser-title {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.edura-shot-img-wrap {
+  position: relative;
+  height: 195px;
+  overflow: hidden;
+  background: #f8fafc;
+}
+
+.edura-shot-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.edura-shot-card:hover .edura-shot-img-wrap img {
+  transform: scale(1.04);
+}
+
+.edura-shot-caption {
+  padding: 0.68rem 0.9rem;
+  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.4;
+  border-top: 1px solid var(--line);
+}
+
+.edura-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(7, 18, 32, 0.82);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+
+.edura-lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.edura-lightbox-content {
+  position: relative;
+  max-width: min(1100px, 94vw);
+  max-height: 90vh;
+  padding: 14px;
+  border-radius: 22px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edura-lightbox-img {
+  max-width: 100%;
+  max-height: 78vh;
+  border-radius: 14px;
+  object-fit: contain;
+}
+
+.edura-lightbox-caption {
+  margin: 0.7rem 0 0.2rem;
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.edura-lightbox-close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--text);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
 .edura-columns {
   position: relative;
   z-index: 1;
@@ -1539,8 +2006,19 @@ body[data-theme='dark'] .field-group textarea {
   .project-grid,
   .project-grid-two,
   .edura-columns,
+  .edura-gallery-grid,
+  .vku-focus-grid,
   .showcase-card {
     grid-template-columns: 1fr;
+  }
+
+  .vku-meta-grid,
+  .vku-journey-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .vku-mini-thumb {
+    display: none;
   }
 
   .nav {
@@ -1626,8 +2104,23 @@ body[data-theme='dark'] .field-group textarea {
     padding: 1.25rem;
   }
 
-  .edura-case-card {
+  .edura-case-card,
+  .vku-edu-card {
     padding: 1.35rem;
+  }
+
+  .vku-brand-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .vku-circuit-deco {
+    display: none;
+  }
+
+  .vku-meta-grid,
+  .vku-journey-track {
+    grid-template-columns: 1fr;
   }
 
   .site-header {
